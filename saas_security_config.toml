@@ -1,0 +1,108 @@
+# SaaS Security Configuration Baseline
+# This file captures fundamental elements of good SaaS security including identity management,
+# network controls, integration management, and configuration baselines.
+
+[meta]
+description = "Configuration for SaaS Security Controls"
+version = "1.0.0"
+last_updated = "2023-10-27"
+
+# -----------------------------------------------------------------------------
+# Identity and Access Management (IAM)
+# -----------------------------------------------------------------------------
+
+[iam.identity_federation]
+label = "Identity Federation & SSO"
+description = "Integration with external Identity Providers (IdP) for centralized authentication."
+enabled = true
+relevant = true
+value = "saml_2_0"
+allowed_values = ["saml_2_0", "oidc", "disabled"]
+configuration_details = { idp_url = "https://idp.example.com/sso", certificate_expiry = "2024-12-31" }
+
+[iam.mfa_local]
+label = "Multi-Factor Authentication (Local Accounts)"
+description = "Requirement for MFA on accounts not managed by SSO (e.g., break-glass admins)."
+enabled = true
+relevant = true
+value = "enforced_all"
+allowed_values = ["enforced_all", "enforced_admin_only", "optional", "disabled"]
+configuration_details = { allowed_methods = ["totp", "webauthn"], grace_period_days = 0 }
+
+[iam.least_privilege]
+label = "Least Privilege Principals"
+description = "Enforcement of minimal necessary permissions for users and service accounts."
+enabled = true
+relevant = true
+value = "rbac_strict"
+allowed_values = ["rbac_strict", "rbac_lenient", "manual_assignment"]
+configuration_details = { default_role = "read_only", admin_role_requires_approval = true }
+
+[iam.account_review]
+label = "Account Review Process"
+description = "Frequency and enforcement of user access reviews."
+enabled = true
+relevant = true
+value = "quarterly"
+allowed_values = ["monthly", "quarterly", "semi_annually", "annually", "manual"]
+configuration_details = { auto_revoke_unused_days = 90 }
+
+# -----------------------------------------------------------------------------
+# Network Security
+# -----------------------------------------------------------------------------
+
+[network.ip_allowlist]
+label = "IP Allow Listing"
+description = "Restrict access to the administration console or API to specific IP ranges."
+enabled = true
+relevant = true
+value = ["10.0.0.0/8", "192.168.1.0/24"] # Example CIDRs
+allowed_values = "List of valid CIDR strings"
+configuration_details = { enforcement_mode = "strict", bypass_for_sso = false }
+
+[network.traffic_encryption]
+label = "Traffic Encryption"
+description = "Encryption standards for data in transit."
+enabled = true
+relevant = true
+value = "tls_1_2_or_higher"
+allowed_values = ["tls_1_2_or_higher", "tls_1_3", "allow_legacy"]
+
+# -----------------------------------------------------------------------------
+# Integrations
+# -----------------------------------------------------------------------------
+
+[integrations.inventory]
+label = "Integration Enumeration"
+description = "Active inventory and approval of third-party integrations."
+enabled = true
+relevant = true
+value = "whitelist_only"
+allowed_values = ["whitelist_only", "monitor_only", "open"]
+configuration_details = { auto_discovery = true }
+
+# -----------------------------------------------------------------------------
+# Configuration Management
+# -----------------------------------------------------------------------------
+
+[configuration.baseline]
+label = "Least Functionality Secure Configuration"
+description = "Disabling unused services, ports, and features to minimize attack surface."
+enabled = true
+relevant = true
+value = "strict_baseline"
+allowed_values = ["strict_baseline", "standard_baseline", "custom"]
+configuration_details = { disable_unused_api_endpoints = true, remove_default_accounts = true }
+
+# -----------------------------------------------------------------------------
+# Logging and Monitoring
+# -----------------------------------------------------------------------------
+
+[logging.audit_logs]
+label = "Audit Logging"
+description = "Capture of security-relevant events."
+enabled = true
+relevant = true
+value = "comprehensive"
+allowed_values = ["comprehensive", "authentication_only", "disabled"]
+configuration_details = { retention_days = 365, export_to_siem = true }
