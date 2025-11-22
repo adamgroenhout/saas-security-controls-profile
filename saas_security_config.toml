@@ -106,6 +106,17 @@ exception = false
 exception_id = ""
 configuration_details = { auto_discovery = true }
 
+[integrations.source_ip_restrictions]
+label = "Integration Source IP Restrictions"
+description = "Status of source IP access restrictions for critical integrations."
+enabled = true
+relevant = true
+# List relevant key integrations and their restriction status (true = enforced, false = not enforced)
+value = { salesforce = true, github = true, slack = false, zoom = false }
+allowed_values = "Boolean (true/false) per integration"
+exception = false
+exception_id = ""
+
 # -----------------------------------------------------------------------------
 # Configuration Management
 # -----------------------------------------------------------------------------
