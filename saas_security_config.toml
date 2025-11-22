@@ -66,6 +66,17 @@ exception = false
 exception_id = ""
 configuration_details = { auto_revoke_unused_days = 90 }
 
+[iam.emergency_access]
+label = "Emergency Access Strategy"
+description = "Controls and accounts for regaining access during IdP/SSO failures."
+enabled = true
+relevant = true
+value = "break_glass_accounts"
+allowed_values = ["break_glass_accounts", "manual_fallback", "none"]
+exception = false
+exception_id = ""
+configuration_details = { account_count = 2, credential_rotation_days = 90 }
+
 # -----------------------------------------------------------------------------
 # Network Security
 # -----------------------------------------------------------------------------
