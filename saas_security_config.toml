@@ -33,6 +33,17 @@ exception = false
 exception_id = ""
 configuration_details = { idp_url = "https://idp.example.com/sso", certificate_expiry = "2024-12-31" }
 
+[iam.sso_assignment]
+label = "SSO User Assignment"
+description = "Policy controlling which IdP users are authorized to access the application."
+enabled = true
+relevant = true
+value = "group_restricted"
+allowed_values = ["group_restricted", "all_users"]
+exception = false
+exception_id = ""
+configuration_details = { assignment_strategy = "rbac_mapped_groups" }
+
 [iam.mfa_local]
 label = "Multi-Factor Authentication (Local Accounts)"
 description = "Requirement for MFA on accounts not managed by SSO (e.g., break-glass admins)."
