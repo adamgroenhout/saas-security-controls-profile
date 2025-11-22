@@ -1,9 +1,20 @@
 # SaaS Security Configuration Baseline
+# This file captures fundamental elements of good SaaS security including identity management,
+# network controls, integration management, and configuration baselines.
+#
+# Field Definitions:
+# - label: A human-readable name for the security control or setting.
+# - description: A brief explanation of what the control does and why it is important.
+# - enabled: Boolean (true/false) indicating if this control is currently active or enforced.
+# - relevant: Boolean (true/false) indicating if this control applies to the specific environment or use case.
+# - value: The current configuration setting or state for the control.
+# - allowed_values: A reference list of standard options, expected formats, or valid ranges for the 'value' field.
+# - configuration_details: A sub-table containing specific, granular parameters or metadata relevant to the control.
 
 [meta]
 description = "Configuration for SaaS Security Controls"
 version = "1.0.0"
-last_updated = "YYYY-MM-DD"
+last_updated = "2023-10-27"
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management (IAM)
