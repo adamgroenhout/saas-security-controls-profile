@@ -9,11 +9,13 @@
 # - relevant: Boolean (true/false) indicating if this control applies to the specific environment or use case.
 # - value: The current configuration setting or state for the control.
 # - allowed_values: A reference list of standard options, expected formats, or valid ranges for the 'value' field.
+# - exception: Boolean (true/false) indicating if a policy exception has been granted for this control.
+# - exception_id: The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable.
 # - configuration_details: A sub-table containing specific, granular parameters or metadata relevant to the control.
 
 [meta]
 description = "Configuration for SaaS Security Controls"
-version = "1.0.0"
+version = "1.1.0"
 last_updated = "2023-10-27"
 
 # -----------------------------------------------------------------------------
@@ -27,6 +29,8 @@ enabled = true
 relevant = true
 value = "saml_2_0"
 allowed_values = ["saml_2_0", "oidc", "disabled"]
+exception = false
+exception_id = ""
 configuration_details = { idp_url = "https://idp.example.com/sso", certificate_expiry = "2024-12-31" }
 
 [iam.mfa_local]
@@ -36,6 +40,8 @@ enabled = true
 relevant = true
 value = "enforced_all"
 allowed_values = ["enforced_all", "enforced_admin_only", "optional", "disabled"]
+exception = false
+exception_id = ""
 configuration_details = { allowed_methods = ["totp", "webauthn"], grace_period_days = 0 }
 
 [iam.least_privilege]
@@ -45,6 +51,8 @@ enabled = true
 relevant = true
 value = "rbac_strict"
 allowed_values = ["rbac_strict", "rbac_lenient", "manual_assignment"]
+exception = false
+exception_id = ""
 configuration_details = { default_role = "read_only", admin_role_requires_approval = true }
 
 [iam.account_review]
@@ -54,6 +62,8 @@ enabled = true
 relevant = true
 value = "quarterly"
 allowed_values = ["monthly", "quarterly", "semi_annually", "annually", "manual"]
+exception = false
+exception_id = ""
 configuration_details = { auto_revoke_unused_days = 90 }
 
 # -----------------------------------------------------------------------------
@@ -67,6 +77,8 @@ enabled = true
 relevant = true
 value = ["10.0.0.0/8", "192.168.1.0/24"] # Example CIDRs
 allowed_values = "List of valid CIDR strings"
+exception = false
+exception_id = ""
 configuration_details = { enforcement_mode = "strict", bypass_for_sso = false }
 
 [network.traffic_encryption]
@@ -76,6 +88,8 @@ enabled = true
 relevant = true
 value = "tls_1_2_or_higher"
 allowed_values = ["tls_1_2_or_higher", "tls_1_3", "allow_legacy"]
+exception = false
+exception_id = ""
 
 # -----------------------------------------------------------------------------
 # Integrations
@@ -88,6 +102,8 @@ enabled = true
 relevant = true
 value = "whitelist_only"
 allowed_values = ["whitelist_only", "monitor_only", "open"]
+exception = false
+exception_id = ""
 configuration_details = { auto_discovery = true }
 
 # -----------------------------------------------------------------------------
@@ -101,6 +117,8 @@ enabled = true
 relevant = true
 value = "strict_baseline"
 allowed_values = ["strict_baseline", "standard_baseline", "custom"]
+exception = false
+exception_id = ""
 configuration_details = { disable_unused_api_endpoints = true, remove_default_accounts = true }
 
 # -----------------------------------------------------------------------------
@@ -114,4 +132,6 @@ enabled = true
 relevant = true
 value = "comprehensive"
 allowed_values = ["comprehensive", "authentication_only", "disabled"]
+exception = false
+exception_id = ""
 configuration_details = { retention_days = 365, export_to_siem = true }
