@@ -77,6 +77,17 @@ exception = false
 exception_id = ""
 configuration_details = { account_count = 2, credential_rotation_days = 90 }
 
+[iam.provisioning]
+label = "User Provisioning Strategy"
+description = "Methodology for managing user lifecycle (creation, updates, deletion)."
+enabled = true
+relevant = true
+value = "scim"
+allowed_values = ["scim", "jit", "api_custom", "manual"]
+exception = false
+exception_id = ""
+configuration_details = { automated_deprovisioning = true }
+
 # -----------------------------------------------------------------------------
 # Network Security
 # -----------------------------------------------------------------------------
