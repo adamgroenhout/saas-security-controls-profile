@@ -112,10 +112,15 @@ description = "Status of source IP access restrictions for critical integrations
 enabled = true
 relevant = true
 # List relevant key integrations and their restriction status (true = enforced, false = not enforced)
-value = { salesforce = true, github = true, slack = false, zoom = false }
 allowed_values = "Boolean (true/false) per integration"
 exception = false
 exception_id = ""
+
+[integrations.source_ip_restrictions.value]
+salesforce = true
+github = true
+slack = false
+zoom = false
 
 # -----------------------------------------------------------------------------
 # Configuration Management
