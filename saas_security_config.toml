@@ -100,8 +100,8 @@ label = "Integration Enumeration"
 description = "Active inventory and approval of third-party integrations."
 enabled = true
 relevant = true
-value = "whitelist_only"
-allowed_values = ["whitelist_only", "monitor_only", "open"]
+value = "allowlist_only"
+allowed_values = ["allowlist_only", "monitor_only", "open"]
 exception = false
 exception_id = ""
 configuration_details = { auto_discovery = true }
