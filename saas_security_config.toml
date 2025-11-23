@@ -99,6 +99,17 @@ exception = false
 exception_id = ""
 configuration_details = { automated_deprovisioning = true }
 
+[iam.api_key_policy]
+label = "API Key Management"
+description = "Policies for the lifecycle and security of API keys."
+enabled = true
+relevant = true
+value = "strict_rotation"
+allowed_values = ["strict_rotation", "manual_audit", "disabled"]
+exception = false
+exception_id = ""
+configuration_details = { rotation_days = 90, usage_monitoring = true }
+
 # -----------------------------------------------------------------------------
 # Network Security
 # -----------------------------------------------------------------------------
@@ -166,6 +177,17 @@ exception = false
 exception_id = ""
 configuration_details = { admin_consent_workflow = true }
 
+[integrations.automation_security]
+label = "Automation Workflow Security"
+description = "Controls for third-party automation tools and workflow connectors."
+enabled = true
+relevant = true
+value = "managed_only"
+allowed_values = ["managed_only", "restricted", "open"]
+exception = false
+exception_id = ""
+configuration_details = { allow_zapier = false, allow_power_automate = false }
+
 # -----------------------------------------------------------------------------
 # Sharing and Collaboration
 # -----------------------------------------------------------------------------
@@ -180,6 +202,21 @@ allowed_values = ["authenticated_external_users_only", "restricted", "anyone_wit
 exception = false
 exception_id = ""
 configuration_details = { expiration_policy_days = 30, allow_guest_invites = false }
+
+# -----------------------------------------------------------------------------
+# Data Security
+# -----------------------------------------------------------------------------
+
+[data.exfiltration_controls]
+label = "Data Exfiltration Controls"
+description = "Restrictions on mass data export and third-party backup tools."
+enabled = true
+relevant = true
+value = "block_takeout_services"
+allowed_values = ["block_takeout_services", "monitor_only", "open"]
+exception = false
+exception_id = ""
+configuration_details = { restrict_bulk_export = true }
 
 # -----------------------------------------------------------------------------
 # Configuration Management
