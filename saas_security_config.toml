@@ -155,6 +155,32 @@ github = true
 slack = false
 zoom = false
 
+[integrations.user_consent]
+label = "User Consent to Apps"
+description = "Controls whether users can consent to third-party applications accessing their data."
+enabled = true
+relevant = true
+value = "disabled"
+allowed_values = ["disabled", "verified_publishers_only", "open"]
+exception = false
+exception_id = ""
+configuration_details = { admin_consent_workflow = true }
+
+# -----------------------------------------------------------------------------
+# Sharing and Collaboration
+# -----------------------------------------------------------------------------
+
+[sharing.external_collaboration]
+label = "External Collaboration Settings"
+description = "Controls for file sharing and collaboration with external users."
+enabled = true
+relevant = true
+value = "authenticated_external_users_only"
+allowed_values = ["authenticated_external_users_only", "restricted", "anyone_with_link", "disabled"]
+exception = false
+exception_id = ""
+configuration_details = { expiration_policy_days = 30, allow_guest_invites = false }
+
 # -----------------------------------------------------------------------------
 # Configuration Management
 # -----------------------------------------------------------------------------
