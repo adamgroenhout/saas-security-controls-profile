@@ -1,5 +1,10 @@
 # SaaS Security Configuration Baseline
-#
+
+[meta]
+description = "Configuration for SaaS Security Controls"
+version = "1.0"
+last_updated = "2025-11-22"
+
 # Field Definitions:
 # - label: A human-readable name for the security control or setting.
 # - description: A brief explanation of what the control does and why it is important.
@@ -10,11 +15,6 @@
 # - exception: Boolean (true/false) indicating if a policy exception has been granted for this control.
 # - exception_id: The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable.
 # - configuration_details: A sub-table containing specific, granular parameters or metadata relevant to the control.
-
-[meta]
-description = "Configuration for SaaS Security Controls"
-version = "1.0"
-last_updated = "2025-11-22"
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management (IAM)
