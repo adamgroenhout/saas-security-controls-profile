@@ -1,6 +1,4 @@
 # SaaS Security Configuration Baseline
-# This file captures fundamental elements of good SaaS security including identity management,
-# network controls, integration management, and configuration baselines.
 #
 # Field Definitions:
 # - label: A human-readable name for the security control or setting.
