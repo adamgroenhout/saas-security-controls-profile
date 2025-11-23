@@ -188,6 +188,17 @@ exception = false
 exception_id = ""
 configuration_details = { allow_zapier = false, allow_power_automate = false }
 
+[integrations.ai_governance]
+label = "Generative AI & LLM Governance"
+description = "Controls for the usage of AI tools and data sharing with LLMs."
+enabled = true
+relevant = true
+value = "sanctioned_only"
+allowed_values = ["sanctioned_only", "blocked", "open"]
+exception = false
+exception_id = ""
+configuration_details = { block_public_chatgpt = true, allow_enterprise_copilot = true }
+
 # -----------------------------------------------------------------------------
 # Sharing and Collaboration
 # -----------------------------------------------------------------------------
@@ -217,6 +228,28 @@ allowed_values = ["block_takeout_services", "monitor_only", "open"]
 exception = false
 exception_id = ""
 configuration_details = { restrict_bulk_export = true }
+
+[data.classification]
+label = "Data Classification Policy"
+description = "Enforcement of data tagging and classification labels."
+enabled = true
+relevant = true
+value = "automated_enforcement"
+allowed_values = ["automated_enforcement", "manual", "none"]
+exception = false
+exception_id = ""
+configuration_details = { default_label = "internal", require_label_on_download = true }
+
+[data.encryption_at_rest]
+label = "Data Encryption at Rest"
+description = "Encryption standards for data stored within the SaaS provider."
+enabled = true
+relevant = true
+value = "provider_managed"
+allowed_values = ["provider_managed", "customer_managed_keys", "none"]
+exception = false
+exception_id = ""
+configuration_details = { key_rotation_days = 365 }
 
 # -----------------------------------------------------------------------------
 # Configuration Management
