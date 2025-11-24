@@ -2,7 +2,7 @@
 
 [meta]
 description = "Configuration for SaaS Security Controls"
-version = "1.3"
+version = "1.4"
 last_updated = "2025-11-23"
 
 # Field Definitions:
@@ -267,6 +267,27 @@ allowed_values = ["authenticated_external_users_only", "restricted", "anyone_wit
 exception = false
 exception_id = ""
 configuration_details = { expiration_policy_days = 30, allow_guest_invites = false }
+
+[sharing.public_link_restriction]
+label = "Restrict Public Link Sharing"
+description = "Prevents users from creating public, anonymous links (e.g., 'Anyone with the link')."
+enabled = true
+relevant = true
+value = "internal_only"
+allowed_values = ["internal_only", "specific_people", "public_with_expiry"]
+exception = false
+exception_id = ""
+
+[sharing.external_domain_restriction]
+label = "External Domain Allow/Deny List"
+description = "Restricts external sharing to specific allowed domains or blocks specific denied domains."
+enabled = true
+relevant = true
+value = "allowlist_only"
+allowed_values = ["allowlist_only", "denylist_only", "open"]
+exception = false
+exception_id = ""
+configuration_details = { allowed_domains = ["partner.com", "vendor.com"], denied_domains = ["competitor.com", "public-email.com"] }
 
 # -----------------------------------------------------------------------------
 # Data Security
