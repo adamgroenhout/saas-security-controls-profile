@@ -1,7 +1,7 @@
 [meta]
-description = "Configuration for SaaS Security Controls"
-version = "1.4"
-last_updated = "2025-11-23"
+description = "SaaS security control framework for a specific SaaS application"
+version = "0.1"
+last_updated = "YYYY-MM-DD"
 
 # Field Definitions:
 # - label: A human-readable name for the security control or setting.
@@ -15,7 +15,7 @@ last_updated = "2025-11-23"
 # - configuration_details: A sub-table containing specific, granular parameters or metadata relevant to the control.
 
 # -----------------------------------------------------------------------------
-# Identity and Access Management (IAM)
+# Identity and Access Management
 # -----------------------------------------------------------------------------
 
 [iam.identity_federation]
@@ -239,17 +239,6 @@ allowed_values = ["managed_only", "restricted", "open"]
 exception = false
 exception_id = ""
 configuration_details = { allow_zapier = false, allow_power_automate = false }
-
-[integrations.ai_governance]
-label = "Generative AI & LLM Governance"
-description = "Controls for the usage of AI tools and data sharing with LLMs."
-enabled = true
-relevant = true
-value = "sanctioned_only"
-allowed_values = ["sanctioned_only", "blocked", "open"]
-exception = false
-exception_id = ""
-configuration_details = { block_public_chatgpt = true, allow_enterprise_copilot = true }
 
 # -----------------------------------------------------------------------------
 # Sharing and Collaboration
