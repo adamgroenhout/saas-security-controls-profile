@@ -3,7 +3,6 @@ description = "SaaS security control framework for a specific SaaS application"
 version = "0.1"
 last_updated = "YYYY-MM-DD"
 
-
 [meta.definitions]
 label = "A human-readable name for the security control or setting."
 description = "A brief explanation of what the control does and why it is important."
@@ -14,8 +13,6 @@ allowed_values = "A reference list of standard options, expected formats, or val
 exception = "Boolean (true/false) indicating if a policy exception has been granted for this control."
 exception_id = "The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable."
 configuration_details = "A sub-table containing specific, granular parameters or metadata relevant to the control."
-
-
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management
@@ -63,7 +60,7 @@ value = "rbac_strict"
 allowed_values = ["rbac_strict", "rbac_lenient", "manual_assignment"]
 exception = false
 exception_id = ""
-configuration_details = { default_role = "read_only", admin_role_requires_approval = true }
+configuration_details = { default_role = "read_only", admin_role = true }
 
 [iam.account_review]
 label = "Account Review Process"
