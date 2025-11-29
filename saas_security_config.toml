@@ -3,16 +3,19 @@ description = "SaaS security control framework for a specific SaaS application"
 version = "0.1"
 last_updated = "YYYY-MM-DD"
 
-# Field Definitions:
-# - label: A human-readable name for the security control or setting.
-# - description: A brief explanation of what the control does and why it is important.
-# - enabled: Boolean (true/false) indicating if this control is currently active or enforced.
-# - relevant: Boolean (true/false) indicating if this control applies to the specific environment or use case.
-# - value: The current configuration setting or state for the control.
-# - allowed_values: A reference list of standard options, expected formats, or valid ranges for the 'value' field.
-# - exception: Boolean (true/false) indicating if a policy exception has been granted for this control.
-# - exception_id: The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable.
-# - configuration_details: A sub-table containing specific, granular parameters or metadata relevant to the control.
+
+[meta.definitions]
+label = "A human-readable name for the security control or setting."
+description = "A brief explanation of what the control does and why it is important."
+enabled = "Boolean (true/false) indicating if this control is currently active or enforced."
+relevant = "Boolean (true/false) indicating if this control applies to the specific environment or use case."
+value = "The current configuration setting or state for the control."
+allowed_values = "A reference list of standard options, expected formats, or valid ranges for the 'value' field."
+exception = "Boolean (true/false) indicating if a policy exception has been granted for this control."
+exception_id = "The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable."
+configuration_details = "A sub-table containing specific, granular parameters or metadata relevant to the control."
+
+
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management
