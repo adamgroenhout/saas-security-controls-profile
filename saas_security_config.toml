@@ -12,13 +12,13 @@ framework_version = "0.1"
 # --- Field Definitions ---
 label = "A human-readable name for the security control or setting."
 description = "A brief explanation of what the control does and why it is important."
-relevant = "Boolean (true/false) indicating if this control applies to the specific environment or use case."
-enabled = "Boolean (true/false) indicating if this control is currently active or enforced."
+relevant = "Boolean (true/false) indicating if this control applies to and is available for the app in context."
+enabled = "Boolean (true/false) indicating if this control is currently implemented."
 value = "The current configuration setting or state for the control."
 allowed_values = "A reference list of standard options, expected formats, or valid ranges for the 'value' field."
 exception = "Boolean (true/false) indicating if a policy exception has been granted for this control."
 exception_id = "The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable."
-configuration_details = "A sub-table containing specific, granular parameters or metadata relevant to the control."
+configuration_details = "Specific, granular parameters, settings, or metadata relevant to the control."
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management
@@ -45,6 +45,17 @@ allowed_values = ["group_restricted", "all_users"]
 exception = false
 exception_id = ""
 configuration_details = { assignment_strategy = "rbac_mapped_groups" }
+
+[iam.sso_enforcement]
+label = "SSO Enforcement (disable local accounts)"
+description = "Disables alternative login methods (e.g. username/password) for SSO-enabled users."
+relevant = true
+enabled = true
+value = "strict_enforcement"
+allowed_values = ["strict_enforcement", "mixed_mode", "disabled"]
+exception = false
+exception_id = ""
+configuration_details = { allow_break_glass = true, exclude_service_accounts = true }
 
 [iam.mfa_local]
 label = "Multi-Factor Authentication (Local Accounts)"
@@ -78,6 +89,17 @@ allowed_values = ["monthly", "quarterly", "semi_annually", "annually", "manual"]
 exception = false
 exception_id = ""
 configuration_details = { auto_revoke_unused_days = 90 }
+
+[iam.nhi_governance]
+label = "Non-Human Identity (NHI) Governance"
+description = "Governance of service accounts and bots, including expiration and identification."
+relevant = true
+enabled = true
+value = "governed_with_expiration"
+allowed_values = ["governed_with_expiration", "manual", "none"]
+exception = false
+exception_id = ""
+configuration_details = { require_expiration_date = true, identify_source_target = true, ui_access_disabled = true }
 
 [iam.emergency_access]
 label = "Emergency Access Strategy"
@@ -323,9 +345,9 @@ configuration_details = { key_rotation_days = 365 }
 # Configuration Management
 # -----------------------------------------------------------------------------
 
-[configuration.baseline]
-label = "Least Functionality Secure Configuration"
-description = "Disabling unused services, ports, and features to minimize attack surface."
+[configuration.least_functionality]
+label = "Least functionality secure configuration"
+description = "Disabling unused services and features to minimize attack surface."
 relevant = true
 enabled = true
 value = "strict_baseline"
