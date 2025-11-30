@@ -1,7 +1,6 @@
 [meta]
-description = "SaaS security control framework for a specific SaaS application"
-version = "0.1"
-last_updated = "YYYY-MM-DD"
+description = "Security control framework for SaaS applications"
+framework_version = "0.1"
 
 [meta.definitions]
 label = "A human-readable name for the security control or setting."
@@ -13,6 +12,13 @@ allowed_values = "A reference list of standard options, expected formats, or val
 exception = "Boolean (true/false) indicating if a policy exception has been granted for this control."
 exception_id = "The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable."
 configuration_details = "A sub-table containing specific, granular parameters or metadata relevant to the control."
+
+[meta.application]
+name = "Example App"
+url = "https://app.example.com"
+business_owners = ["owner1@example.com", "owner2@example.com"]
+primary_admins = ["admin1@example.com", "admin2@example.com"]
+risk_classification = "high"
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management
