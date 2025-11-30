@@ -189,29 +189,29 @@ description = "Security configuration for external application connections, incl
 relevant = true
 enabled = true
 # Configuration consists of integration names mapped to their security attributes
-allowed_values = "Integration entries (e.g. salesforce, github) with attributes: account_type, ip_restrictions, privilege_level"
+allowed_values = "Integration entries (e.g. salesforce, github) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), least_privileged (boolean)"
 exception = false
 exception_id = ""
 
 [integrations.connection_security.salesforce]
 account_type = "dedicated"
 ip_restrictions = true
-privilege_level = "least_privilege"
+least_privileged = true
 
 [integrations.connection_security.github]
 account_type = "dedicated"
 ip_restrictions = true
-privilege_level = "admin"
+least_privileged = false
 
 [integrations.connection_security.slack]
 account_type = "shared"
 ip_restrictions = false
-privilege_level = "read_write"
+least_privileged = false
 
 [integrations.connection_security.zoom]
 account_type = "dedicated"
 ip_restrictions = false
-privilege_level = "least_privilege"
+least_privileged = true
 
 [integrations.user_consent]
 description = "Controls whether users can consent to third-party applications accessing their data."
