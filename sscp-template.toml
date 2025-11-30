@@ -9,7 +9,6 @@ risk_classification = "high"
 [meta.template]
 sscp_template_version = "0.1"
 # --- Field Definitions ---
-label = "A human-readable name for the security control or setting."
 description = "A brief explanation of what the control does and why it is important."
 relevant = "Boolean (true/false) indicating if this control applies to and is available for the app in context."
 enabled = "Boolean (true/false) indicating if this control is currently implemented."
@@ -24,7 +23,6 @@ configuration_details = "Specific, granular parameters, settings, or metadata re
 # -----------------------------------------------------------------------------
 
 [iam.identity_federation]
-label = "Identity Federation & SSO"
 description = "Integration with external Identity Providers (IdP) for centralized authentication."
 relevant = true
 enabled = true
@@ -35,7 +33,6 @@ exception_id = ""
 configuration_details = { idp_url = "https://idp.example.com/sso", certificate_expiry = "2024-12-31" }
 
 [iam.sso_assignment]
-label = "SSO User Assignment"
 description = "Policy controlling which IdP users are authorized to access the application."
 relevant = true
 enabled = true
@@ -46,7 +43,6 @@ exception_id = ""
 configuration_details = { assignment_strategy = "rbac_mapped_groups" }
 
 [iam.sso_enforcement]
-label = "SSO Enforcement (disable local accounts)"
 description = "Disables alternative login methods (e.g. username/password) for SSO-enabled users."
 relevant = true
 enabled = true
@@ -57,7 +53,6 @@ exception_id = ""
 configuration_details = { allow_break_glass = true, exclude_service_accounts = true }
 
 [iam.mfa_local]
-label = "Multi-Factor Authentication (Local Accounts)"
 description = "Requirement for MFA on accounts not managed by SSO (e.g., break-glass admins)."
 relevant = true
 enabled = true
@@ -68,7 +63,6 @@ exception_id = ""
 configuration_details = { allowed_methods = ["totp", "webauthn"], grace_period_days = 0 }
 
 [iam.least_privilege]
-label = "Least Privilege Principals"
 description = "Enforcement of minimal necessary permissions for users and service accounts."
 relevant = true
 enabled = true
@@ -79,7 +73,6 @@ exception_id = ""
 configuration_details = { default_role = "read_only", admin_role = true }
 
 [iam.account_review]
-label = "Account Review Process"
 description = "Frequency and enforcement of user access reviews."
 relevant = true
 enabled = true
@@ -90,7 +83,6 @@ exception_id = ""
 configuration_details = { auto_revoke_unused_days = 90 }
 
 [iam.nhi_governance]
-label = "Non-Human Identity (NHI) Governance"
 description = "Governance of service accounts and bots, including expiration and identification."
 relevant = true
 enabled = true
@@ -101,7 +93,6 @@ exception_id = ""
 configuration_details = { require_expiration_date = true, identify_source_target = true, ui_access_disabled = true }
 
 [iam.emergency_access]
-label = "Emergency Access Strategy"
 description = "Controls and accounts for regaining access during IdP/SSO failures."
 relevant = true
 enabled = true
@@ -112,7 +103,6 @@ exception_id = ""
 configuration_details = { account_count = 2, credential_rotation_days = 90 }
 
 [iam.provisioning]
-label = "User Provisioning Strategy"
 description = "Methodology for managing user lifecycle (creation, updates, deletion)."
 relevant = true
 enabled = true
@@ -123,7 +113,6 @@ exception_id = ""
 configuration_details = { automated_deprovisioning = true }
 
 [iam.api_key_policy]
-label = "API Key Management"
 description = "Policies for the lifecycle and security of API keys."
 relevant = true
 enabled = true
@@ -134,7 +123,6 @@ exception_id = ""
 configuration_details = { rotation_days = 90, usage_monitoring = true }
 
 [iam.password_policy_local]
-label = "Local Password Complexity"
 description = "Complexity requirements for local (non-SSO) or emergency break-glass accounts."
 relevant = true
 enabled = true
@@ -145,7 +133,6 @@ exception_id = ""
 configuration_details = { min_length = 14, require_symbols = true, require_numbers = true }
 
 [iam.session_idle_timeout]
-label = "Idle Session Timeout"
 description = "Time of inactivity before the application automatically terminates the session."
 relevant = true
 enabled = true
@@ -155,7 +142,6 @@ exception = false
 exception_id = ""
 
 [iam.session_absolute_lifetime]
-label = "Absolute Session Lifetime"
 description = "Maximum duration of a session regardless of activity (forces token refresh)."
 relevant = true
 enabled = true
@@ -165,7 +151,6 @@ exception = false
 exception_id = ""
 
 [iam.conditional_access_enforcement]
-label = "Conditional Access Policy Enforcement"
 description = "Enforcement of contextual security signals (Device, Location, Risk) during authentication."
 relevant = true
 enabled = true
@@ -175,12 +160,7 @@ exception = false
 exception_id = ""
 configuration_details = { require_managed_device = true, require_compliant_os = true, block_impossible_travel = true, block_high_risk_users = true, require_phishing_resistant_mfa = true, require_mfa_at_sign_in = true }
 
-# -----------------------------------------------------------------------------
-# Network Security
-# -----------------------------------------------------------------------------
-
-[network.ip_allowlist]
-label = "IP Allow Listing"
+[iam.ip_allowlist]
 description = "Restrict access to the administration console and/or API to specific IP ranges."
 relevant = true
 enabled = true
@@ -190,22 +170,11 @@ exception = false
 exception_id = ""
 configuration_details = { enforcement_mode = "strict", bypass_for_sso = false }
 
-[network.traffic_encryption]
-label = "Traffic Encryption"
-description = "Encryption standards for data in transit."
-relevant = true
-enabled = true
-value = "tls_1_2_or_higher"
-allowed_values = ["tls_1_2_or_higher", "tls_1_3", "allow_legacy"]
-exception = false
-exception_id = ""
-
 # -----------------------------------------------------------------------------
 # Integrations
 # -----------------------------------------------------------------------------
 
 [integrations.inventory]
-label = "Integration Enumeration"
 description = "Active inventory and approval of third-party integrations."
 relevant = true
 enabled = true
@@ -216,7 +185,6 @@ exception_id = ""
 configuration_details = { auto_discovery = true }
 
 [integrations.connection_security]
-label = "Integration Connection Security"
 description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
 relevant = true
 enabled = true
@@ -246,7 +214,6 @@ ip_restrictions = false
 privilege_level = "least_privilege"
 
 [integrations.user_consent]
-label = "User Consent to Apps"
 description = "Controls whether users can consent to third-party applications accessing their data."
 relevant = true
 enabled = true
@@ -257,7 +224,6 @@ exception_id = ""
 configuration_details = { admin_consent_workflow = true }
 
 [integrations.automation_security]
-label = "Automation Workflow Security"
 description = "Controls for third-party automation tools and workflow connectors."
 relevant = true
 enabled = true
@@ -272,7 +238,6 @@ configuration_details = { allow_zapier = false, allow_power_automate = false }
 # -----------------------------------------------------------------------------
 
 [sharing.external_collaboration]
-label = "External Collaboration Settings"
 description = "Controls for file sharing and collaboration with external users."
 relevant = true
 enabled = true
@@ -283,7 +248,6 @@ exception_id = ""
 configuration_details = { expiration_policy_days = 30, allow_guest_invites = false }
 
 [sharing.public_link_restriction]
-label = "Restrict Public Link Sharing"
 description = "Prevents users from creating public, anonymous links (e.g., 'Anyone with the link')."
 relevant = true
 enabled = true
@@ -293,7 +257,6 @@ exception = false
 exception_id = ""
 
 [sharing.external_domain_restriction]
-label = "External Domain Allow/Deny List"
 description = "Restricts external sharing to specific allowed domains or blocks specific denied domains."
 relevant = true
 enabled = true
@@ -308,7 +271,6 @@ configuration_details = { allowed_domains = ["partner.com", "vendor.com"], denie
 # -----------------------------------------------------------------------------
 
 [data.exfiltration_controls]
-label = "Data Exfiltration Controls"
 description = "Restrictions on mass data export and third-party backup tools."
 relevant = true
 enabled = true
@@ -319,7 +281,6 @@ exception_id = ""
 configuration_details = { restrict_bulk_export = true }
 
 [data.classification]
-label = "Data Classification Policy"
 description = "Enforcement of data tagging and classification labels."
 relevant = true
 enabled = true
@@ -330,7 +291,6 @@ exception_id = ""
 configuration_details = { default_label = "internal", require_label_on_download = true }
 
 [data.encryption_at_rest]
-label = "Data Encryption at Rest"
 description = "Encryption standards for data stored within the SaaS provider."
 relevant = true
 enabled = true
@@ -345,7 +305,6 @@ configuration_details = { key_rotation_days = 365 }
 # -----------------------------------------------------------------------------
 
 [configuration.least_functionality]
-label = "Least functionality secure configuration"
 description = "Disabling unused services and features to minimize attack surface."
 relevant = true
 enabled = true
@@ -360,7 +319,6 @@ configuration_details = { disable_unused_api_endpoints = true, remove_default_ac
 # -----------------------------------------------------------------------------
 
 [logging.audit_logs]
-label = "Audit Logging"
 description = "Capture of security-relevant events."
 relevant = true
 enabled = true
