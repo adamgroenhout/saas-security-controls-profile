@@ -181,7 +181,7 @@ configuration_details = { require_managed_device = true, require_compliant_os = 
 
 [network.ip_allowlist]
 label = "IP Allow Listing"
-description = "Restrict access to the administration console or API to specific IP ranges."
+description = "Restrict access to the administration console and/or API to specific IP ranges."
 relevant = true
 enabled = true
 value = ["10.0.0.0/8", "192.168.1.0/24"] # Example CIDRs
