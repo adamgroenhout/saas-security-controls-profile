@@ -1,8 +1,11 @@
 [meta]
-description = "Security control framework for SaaS applications"
-framework_version = "0.1"
+framework_description = "Security control framework for SaaS applications"
+framework_version = "0.2"
+last_updated = "2025-11-30"
 
-[meta.definitions]
+# -----------------------------------------------------------------------------
+# Field Definitions
+# -----------------------------------------------------------------------------
 label = "A human-readable name for the security control or setting."
 description = "A brief explanation of what the control does and why it is important."
 enabled = "Boolean (true/false) indicating if this control is currently active or enforced."
