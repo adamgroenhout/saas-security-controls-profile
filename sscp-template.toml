@@ -188,27 +188,27 @@ configuration_details = { auto_discovery = true }
 description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
 relevant = true
 enabled = true
-# Value is a map of integration names to their security attributes
-allowed_values = "Map of integrations with attributes: account_type, ip_restrictions, privilege_level"
+# Configuration consists of integration names mapped to their security attributes
+allowed_values = "Integration entries (e.g. salesforce, github) with attributes: account_type, ip_restrictions, privilege_level"
 exception = false
 exception_id = ""
 
-[integrations.connection_security.value.salesforce]
+[integrations.connection_security.salesforce]
 account_type = "dedicated"
 ip_restrictions = true
 privilege_level = "least_privilege"
 
-[integrations.connection_security.value.github]
+[integrations.connection_security.github]
 account_type = "dedicated"
 ip_restrictions = true
 privilege_level = "admin"
 
-[integrations.connection_security.value.slack]
+[integrations.connection_security.slack]
 account_type = "shared"
 ip_restrictions = false
 privilege_level = "read_write"
 
-[integrations.connection_security.value.zoom]
+[integrations.connection_security.zoom]
 account_type = "dedicated"
 ip_restrictions = false
 privilege_level = "least_privilege"
