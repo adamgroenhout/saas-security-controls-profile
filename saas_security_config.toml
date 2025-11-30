@@ -7,13 +7,14 @@ primary_admins = ["admin1@example.com", "admin2@example.com"]
 risk_classification = "high"
 
 [meta.framework]
-description = "Security control framework for SaaS applications"
-framework_version = "0.1"
+framework_description = "Security control framework for SaaS applications"
+framework_version = "0.2"
+last_updated = "2025-11-30"
 # Field Definitions
 label = "A human-readable name for the security control or setting."
 description = "A brief explanation of what the control does and why it is important."
-enabled = "Boolean (true/false) indicating if this control is currently active or enforced."
 relevant = "Boolean (true/false) indicating if this control applies to the specific environment or use case."
+enabled = "Boolean (true/false) indicating if this control is currently active or enforced."
 value = "The current configuration setting or state for the control."
 allowed_values = "A reference list of standard options, expected formats, or valid ranges for the 'value' field."
 exception = "Boolean (true/false) indicating if a policy exception has been granted for this control."
@@ -27,8 +28,8 @@ configuration_details = "A sub-table containing specific, granular parameters or
 [iam.identity_federation]
 label = "Identity Federation & SSO"
 description = "Integration with external Identity Providers (IdP) for centralized authentication."
-enabled = true
 relevant = true
+enabled = true
 value = "saml_2_0"
 allowed_values = ["saml_2_0", "oidc", "disabled"]
 exception = false
@@ -38,8 +39,8 @@ configuration_details = { idp_url = "https://idp.example.com/sso", certificate_e
 [iam.sso_assignment]
 label = "SSO User Assignment"
 description = "Policy controlling which IdP users are authorized to access the application."
-enabled = true
 relevant = true
+enabled = true
 value = "group_restricted"
 allowed_values = ["group_restricted", "all_users"]
 exception = false
@@ -49,8 +50,8 @@ configuration_details = { assignment_strategy = "rbac_mapped_groups" }
 [iam.mfa_local]
 label = "Multi-Factor Authentication (Local Accounts)"
 description = "Requirement for MFA on accounts not managed by SSO (e.g., break-glass admins)."
-enabled = true
 relevant = true
+enabled = true
 value = "enforced_all"
 allowed_values = ["enforced_all", "enforced_admin_only", "optional", "disabled"]
 exception = false
@@ -60,8 +61,8 @@ configuration_details = { allowed_methods = ["totp", "webauthn"], grace_period_d
 [iam.least_privilege]
 label = "Least Privilege Principals"
 description = "Enforcement of minimal necessary permissions for users and service accounts."
-enabled = true
 relevant = true
+enabled = true
 value = "rbac_strict"
 allowed_values = ["rbac_strict", "rbac_lenient", "manual_assignment"]
 exception = false
@@ -71,8 +72,8 @@ configuration_details = { default_role = "read_only", admin_role = true }
 [iam.account_review]
 label = "Account Review Process"
 description = "Frequency and enforcement of user access reviews."
-enabled = true
 relevant = true
+enabled = true
 value = "quarterly"
 allowed_values = ["monthly", "quarterly", "semi_annually", "annually", "manual"]
 exception = false
@@ -82,8 +83,8 @@ configuration_details = { auto_revoke_unused_days = 90 }
 [iam.emergency_access]
 label = "Emergency Access Strategy"
 description = "Controls and accounts for regaining access during IdP/SSO failures."
-enabled = true
 relevant = true
+enabled = true
 value = "break_glass_accounts"
 allowed_values = ["break_glass_accounts", "manual_fallback", "none"]
 exception = false
@@ -93,8 +94,8 @@ configuration_details = { account_count = 2, credential_rotation_days = 90 }
 [iam.provisioning]
 label = "User Provisioning Strategy"
 description = "Methodology for managing user lifecycle (creation, updates, deletion)."
-enabled = true
 relevant = true
+enabled = true
 value = "scim"
 allowed_values = ["scim", "jit", "api_custom", "manual"]
 exception = false
@@ -104,8 +105,8 @@ configuration_details = { automated_deprovisioning = true }
 [iam.api_key_policy]
 label = "API Key Management"
 description = "Policies for the lifecycle and security of API keys."
-enabled = true
 relevant = true
+enabled = true
 value = "strict_rotation"
 allowed_values = ["strict_rotation", "manual_audit", "disabled"]
 exception = false
@@ -115,8 +116,8 @@ configuration_details = { rotation_days = 90, usage_monitoring = true }
 [iam.password_policy_local]
 label = "Local Password Complexity"
 description = "Complexity requirements for local (non-SSO) or emergency break-glass accounts."
-enabled = true
 relevant = true
+enabled = true
 value = "strong"
 allowed_values = ["strong", "standard", "weak"]
 exception = false
@@ -126,8 +127,8 @@ configuration_details = { min_length = 14, require_symbols = true, require_numbe
 [iam.session_idle_timeout]
 label = "Idle Session Timeout"
 description = "Time of inactivity before the application automatically terminates the session."
-enabled = true
 relevant = true
+enabled = true
 value = 30
 allowed_values = [15, 30, 60]
 exception = false
@@ -136,8 +137,8 @@ exception_id = ""
 [iam.session_absolute_lifetime]
 label = "Absolute Session Lifetime"
 description = "Maximum duration of a session regardless of activity (forces token refresh)."
-enabled = true
 relevant = true
+enabled = true
 value = 14
 allowed_values = [1, 7, 14, 30]
 exception = false
@@ -146,8 +147,8 @@ exception_id = ""
 [iam.conditional_access_enforcement]
 label = "Conditional Access Policy Enforcement"
 description = "Enforcement of contextual security signals (Device, Location, Risk) during authentication."
-enabled = true
 relevant = true
+enabled = true
 value = "idp_enforced"
 allowed_values = ["idp_enforced", "native_ip_restriction", "disabled"]
 exception = false
@@ -161,8 +162,8 @@ configuration_details = { require_managed_device = true, require_compliant_os = 
 [network.ip_allowlist]
 label = "IP Allow Listing"
 description = "Restrict access to the administration console or API to specific IP ranges."
-enabled = true
 relevant = true
+enabled = true
 value = ["10.0.0.0/8", "192.168.1.0/24"] # Example CIDRs
 allowed_values = "List of valid CIDR strings"
 exception = false
@@ -172,8 +173,8 @@ configuration_details = { enforcement_mode = "strict", bypass_for_sso = false }
 [network.traffic_encryption]
 label = "Traffic Encryption"
 description = "Encryption standards for data in transit."
-enabled = true
 relevant = true
+enabled = true
 value = "tls_1_2_or_higher"
 allowed_values = ["tls_1_2_or_higher", "tls_1_3", "allow_legacy"]
 exception = false
@@ -186,8 +187,8 @@ exception_id = ""
 [integrations.inventory]
 label = "Integration Enumeration"
 description = "Active inventory and approval of third-party integrations."
-enabled = true
 relevant = true
+enabled = true
 value = "allowlist_only"
 allowed_values = ["allowlist_only", "monitor_only", "open"]
 exception = false
@@ -197,8 +198,8 @@ configuration_details = { auto_discovery = true }
 [integrations.connection_security]
 label = "Integration Connection Security"
 description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
-enabled = true
 relevant = true
+enabled = true
 # Value is a map of integration names to their security attributes
 allowed_values = "Map of integrations with attributes: account_type, ip_restrictions, privilege_level"
 exception = false
@@ -227,8 +228,8 @@ privilege_level = "least_privilege"
 [integrations.user_consent]
 label = "User Consent to Apps"
 description = "Controls whether users can consent to third-party applications accessing their data."
-enabled = true
 relevant = true
+enabled = true
 value = "disabled"
 allowed_values = ["disabled", "verified_publishers_only", "open"]
 exception = false
@@ -238,8 +239,8 @@ configuration_details = { admin_consent_workflow = true }
 [integrations.automation_security]
 label = "Automation Workflow Security"
 description = "Controls for third-party automation tools and workflow connectors."
-enabled = true
 relevant = true
+enabled = true
 value = "managed_only"
 allowed_values = ["managed_only", "restricted", "open"]
 exception = false
@@ -253,8 +254,8 @@ configuration_details = { allow_zapier = false, allow_power_automate = false }
 [sharing.external_collaboration]
 label = "External Collaboration Settings"
 description = "Controls for file sharing and collaboration with external users."
-enabled = true
 relevant = true
+enabled = true
 value = "authenticated_external_users_only"
 allowed_values = ["authenticated_external_users_only", "restricted", "anyone_with_link", "disabled"]
 exception = false
@@ -264,8 +265,8 @@ configuration_details = { expiration_policy_days = 30, allow_guest_invites = fal
 [sharing.public_link_restriction]
 label = "Restrict Public Link Sharing"
 description = "Prevents users from creating public, anonymous links (e.g., 'Anyone with the link')."
-enabled = true
 relevant = true
+enabled = true
 value = "internal_only"
 allowed_values = ["internal_only", "specific_people", "public_with_expiry"]
 exception = false
@@ -274,8 +275,8 @@ exception_id = ""
 [sharing.external_domain_restriction]
 label = "External Domain Allow/Deny List"
 description = "Restricts external sharing to specific allowed domains or blocks specific denied domains."
-enabled = true
 relevant = true
+enabled = true
 value = "allowlist_only"
 allowed_values = ["allowlist_only", "denylist_only", "open"]
 exception = false
@@ -289,8 +290,8 @@ configuration_details = { allowed_domains = ["partner.com", "vendor.com"], denie
 [data.exfiltration_controls]
 label = "Data Exfiltration Controls"
 description = "Restrictions on mass data export and third-party backup tools."
-enabled = true
 relevant = true
+enabled = true
 value = "block_takeout_services"
 allowed_values = ["block_takeout_services", "monitor_only", "open"]
 exception = false
@@ -300,8 +301,8 @@ configuration_details = { restrict_bulk_export = true }
 [data.classification]
 label = "Data Classification Policy"
 description = "Enforcement of data tagging and classification labels."
-enabled = true
 relevant = true
+enabled = true
 value = "automated_enforcement"
 allowed_values = ["automated_enforcement", "manual", "none"]
 exception = false
@@ -311,8 +312,8 @@ configuration_details = { default_label = "internal", require_label_on_download 
 [data.encryption_at_rest]
 label = "Data Encryption at Rest"
 description = "Encryption standards for data stored within the SaaS provider."
-enabled = true
 relevant = true
+enabled = true
 value = "provider_managed"
 allowed_values = ["provider_managed", "customer_managed_keys", "none"]
 exception = false
@@ -326,8 +327,8 @@ configuration_details = { key_rotation_days = 365 }
 [configuration.baseline]
 label = "Least Functionality Secure Configuration"
 description = "Disabling unused services, ports, and features to minimize attack surface."
-enabled = true
 relevant = true
+enabled = true
 value = "strict_baseline"
 allowed_values = ["strict_baseline", "standard_baseline", "custom"]
 exception = false
@@ -341,8 +342,8 @@ configuration_details = { disable_unused_api_endpoints = true, remove_default_ac
 [logging.audit_logs]
 label = "Audit Logging"
 description = "Capture of security-relevant events."
-enabled = true
 relevant = true
+enabled = true
 value = "comprehensive"
 allowed_values = ["comprehensive", "authentication_only", "disabled"]
 exception = false
