@@ -26,11 +26,11 @@ configuration_details = "Specific, granular parameters, settings, or metadata re
 description = "Integration with external Identity Providers (IdP) for centralized authentication."
 relevant = true
 enabled = true
-value = "saml_2_0"
-allowed_values = ["saml_2_0", "oidc", "disabled"]
+value = "saml_2.0"
+allowed_values = ["saml_2.0", "oidc", "disabled"]
 exception = false
 exception_id = ""
-configuration_details = { idp_url = "https://idp.example.com/sso", certificate_expiry = "2024-12-31" }
+configuration_details = { idp_url = "https://idp.example.com/sso" }
 
 [iam.sso_assignment]
 description = "Policy controlling which IdP users are authorized to access the application."
