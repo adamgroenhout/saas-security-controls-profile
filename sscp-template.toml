@@ -189,7 +189,7 @@ description = "Security configuration for external application connections, incl
 relevant = true
 enabled = true
 # Configuration consists of integration names mapped to their security attributes
-allowed_values = "Integration entries (e.g. salesforce, github) with attributes: account_type, ip_restrictions, privilege_level"
+allowed_values = "Integration entries (e.g. salesforce, github) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), privilege_level ('least_privilege', 'read_write', 'admin')"
 exception = false
 exception_id = ""
 
