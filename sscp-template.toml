@@ -6,9 +6,8 @@ business_owners = ["owner1@example.com", "owner2@example.com"]
 primary_admins = ["admin1@example.com", "admin2@example.com"]
 risk_classification = "high"
 
-[meta.framework]
-framework_description = "Security control framework for SaaS applications"
-framework_version = "0.1"
+[meta.template]
+sscp_template_version = "0.1"
 # --- Field Definitions ---
 label = "A human-readable name for the security control or setting."
 description = "A brief explanation of what the control does and why it is important."
