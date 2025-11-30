@@ -188,8 +188,8 @@ configuration_details = { auto_discovery = true }
 description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
 relevant = true
 enabled = true
-# Value is a map of integration names to their security attributes
-allowed_values = "Map of integrations with attributes: account_type, ip_restrictions, privilege_level"
+# Configuration consists of integration names mapped to their security attributes
+allowed_values = "Integration entries (e.g. salesforce, github) with attributes: account_type, ip_restrictions, privilege_level"
 exception = false
 exception_id = ""
 
