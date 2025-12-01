@@ -163,10 +163,10 @@ exception_id = ""
 configuration_details = { require_managed_device = true, require_compliant_os = true, block_impossible_travel = true, block_high_risk_users = true, require_phishing_resistant_mfa = true, require_mfa_at_sign_in = true }
 
 [iam.ip_allowlist]
-description = "Restrict access to the administration console and/or API to specific IP ranges."
+description = "Restrict user access to the admin console and/or API to specific IP ranges."
 relevant = true
 enabled = true
-value = ["10.0.0.0/8", "192.168.1.0/24"] # Example CIDRs
+value = ["10.0.0.0/8", "192.168.1.0/24"]
 allowed_values = "List of valid CIDR strings"
 exception = false
 exception_id = ""
@@ -175,36 +175,6 @@ configuration_details = { enforcement_mode = "strict", bypass_for_sso = false }
 # -----------------------------------------------------------------------------
 # Integrations
 # -----------------------------------------------------------------------------
-
-[integrations.connection_security]
-description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
-relevant = true
-enabled = true
-# Configuration consists of integration names mapped to their security attributes
-allowed_values = "Integration entries (e.g. app1, app2) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), least_privileged (boolean)"
-exception = false
-exception_id = ""
-configuration_details = ""
-
-[integrations.connection_security.app1]
-account_type = "dedicated"
-ip_restrictions = true
-least_privileged = true
-
-[integrations.connection_security.app2]
-account_type = "dedicated"
-ip_restrictions = true
-least_privileged = false
-
-[integrations.connection_security.app3]
-account_type = "shared"
-ip_restrictions = false
-least_privileged = false
-
-[integrations.connection_security.app4]
-account_type = "dedicated"
-ip_restrictions = false
-least_privileged = true
 
 [integrations.user_consent]
 description = "Controls whether users can consent to third-party applications accessing their data."
@@ -225,6 +195,38 @@ allowed_values = ["managed_only", "restricted", "open"]
 exception = false
 exception_id = ""
 configuration_details = { allowed_apps = ["app5", "app6]" }
+
+# --- Connected Apps ---
+
+[integrations.connected_apps]
+description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
+relevant = true
+enabled = true
+# Configuration consists of integration names mapped to their security attributes
+allowed_values = "Integration entries (e.g. app1, app2) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), least_privileged (boolean)"
+exception = false
+exception_id = ""
+configuration_details = ""
+
+[integrations.connected_apps.app1]
+account_type = "shared"
+ip_restrictions = true
+least_privileged = true
+
+[integrations.connected_apps.app2]
+account_type = "dedicated"
+ip_restrictions = true
+least_privileged = false
+
+[integrations.connected_apps.app3]
+account_type = "shared"
+ip_restrictions = false
+least_privileged = false
+
+[integrations.connected_apps.app4]
+account_type = "dedicated"
+ip_restrictions = false
+least_privileged = true
 
 # -----------------------------------------------------------------------------
 # Sharing and Collaboration
