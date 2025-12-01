@@ -1,4 +1,4 @@
-# SaaS Security Configuration Baseline
+# SaaS Security Controls Profile (SSCP)
 
 ## Overview
 
