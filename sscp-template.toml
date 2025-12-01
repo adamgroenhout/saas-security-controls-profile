@@ -194,7 +194,7 @@ value = "managed_only"
 allowed_values = ["managed_only", "restricted", "open"]
 exception = false
 exception_id = ""
-configuration_details = { allowed_apps = ["app5", "app6]" }
+configuration_details = { allowed_apps = ["app5", "app6"] }
 
 # --- Connected Apps ---
 
