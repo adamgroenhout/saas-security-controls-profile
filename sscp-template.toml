@@ -16,7 +16,7 @@ value = "The current configuration setting or state for the control."
 allowed_values = "A reference list of standard options, expected formats, or valid ranges for the 'value' field."
 exception = "Boolean (true/false) indicating if a policy exception has been granted for this control."
 exception_id = "The unique identifier (e.g., ticket number, risk ID) for the approved exception, if applicable."
-configuration_details = "Specific, granular parameters, settings, or metadata relevant to the control."
+configuration_details = "Optional parameters, settings, or metadata relevant to the control."
 
 # -----------------------------------------------------------------------------
 # Identity and Access Management
