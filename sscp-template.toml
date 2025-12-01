@@ -176,16 +176,6 @@ configuration_details = { enforcement_mode = "strict", bypass_for_sso = false }
 # Integrations
 # -----------------------------------------------------------------------------
 
-[integrations.inventory]
-description = "Active inventory and approval of third-party integrations."
-relevant = true
-enabled = true
-value = "allowlist_only"
-allowed_values = ["allowlist_only", "monitor_only", "open"]
-exception = false
-exception_id = ""
-configuration_details = { auto_discovery = true }
-
 [integrations.connection_security]
 description = "Security configuration for external application connections, including account scoping, type, and network restrictions."
 relevant = true
@@ -234,7 +224,7 @@ value = "managed_only"
 allowed_values = ["managed_only", "restricted", "open"]
 exception = false
 exception_id = ""
-configuration_details = { allow_app5 = false, allow_app6 = false }
+configuration_details = { allowed_apps = ["app5", "app6]" }
 
 # -----------------------------------------------------------------------------
 # Sharing and Collaboration
