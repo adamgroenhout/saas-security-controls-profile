@@ -140,6 +140,7 @@ value = 30
 allowed_values = [15, 30, 60]
 exception = false
 exception_id = ""
+configuration_details = ""
 
 [iam.session_absolute_lifetime]
 description = "Maximum duration of a session regardless of activity (forces token refresh)."
@@ -149,6 +150,7 @@ value = 14
 allowed_values = [1, 7, 14, 30]
 exception = false
 exception_id = ""
+configuration_details = ""
 
 [iam.conditional_access_enforcement]
 description = "Enforcement of contextual security signals (Device, Location, Risk) during authentication."
@@ -192,6 +194,7 @@ enabled = true
 allowed_values = "Integration entries (e.g. app1, app2) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), least_privileged (boolean)"
 exception = false
 exception_id = ""
+configuration_details = ""
 
 [integrations.connection_security.app1]
 account_type = "dedicated"
@@ -255,6 +258,7 @@ value = "internal_only"
 allowed_values = ["internal_only", "specific_people", "public_with_expiry"]
 exception = false
 exception_id = ""
+configuration_details = ""
 
 [sharing.external_domain_restriction]
 description = "Restricts external sharing to specific allowed domains or blocks specific denied domains."
