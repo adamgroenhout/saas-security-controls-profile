@@ -31,8 +31,8 @@ The `sscp-template.toml` file is organized into sections corresponding to the do
 
 1.  Copy `sscp-template.toml` to your project or configuration repository.
 2.  Update the `[meta.application]` section with your specific application details (Name, Owner, Risk Classification).
-3.  Review each control section and adjust the `value`, `enabled`, and `configuration_details` fields to match your organization's security policy.
-4.  Use `relevant = false` for controls that do not apply to your specific SaaS application.
+3.  Review each control section and adjust relavent values to match your organization's security policy and the state of the subject application to reflect the current state. 
+4.  Define the target state for your app(s) and update the SSCP overtime to maintain an understanding of security posture and to track and manage improvement. 
 
 ## Validation
 
