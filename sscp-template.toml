@@ -203,7 +203,7 @@ description = "Security configuration for external application connections, incl
 relevant = true
 enabled = true
 # Configuration consists of integration names mapped to their security attributes
-allowed_values = "Integration entries (e.g. app1, app2) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), least_privileged (boolean)"
+allowed_values = "Integration entries (e.g. app1, app2) with attributes: account_type ('dedicated', 'shared'), ip_restrictions (boolean), least_privileged (boolean), credential_rotation ('30_days', '60_days', '90_days', '180_days', '365_days', 'none')"
 exception = false
 exception_id = ""
 configuration_details = ""
@@ -212,21 +212,25 @@ configuration_details = ""
 account_type = "shared"
 ip_restrictions = true
 least_privileged = true
+credential_rotation = "30_days"
 
 [integrations.connected_apps.app2]
 account_type = "dedicated"
 ip_restrictions = true
 least_privileged = false
+credential_rotation = "90_days"
 
 [integrations.connected_apps.app3]
 account_type = "shared"
 ip_restrictions = false
 least_privileged = false
+credential_rotation = "none"
 
 [integrations.connected_apps.app4]
 account_type = "dedicated"
 ip_restrictions = false
 least_privileged = true
+credential_rotation = "180_days"
 
 # -----------------------------------------------------------------------------
 # Sharing and Collaboration
