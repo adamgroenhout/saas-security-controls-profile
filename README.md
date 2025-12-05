@@ -45,3 +45,24 @@ with open("sscp-template.toml", "rb") as f:
     config = tomllib.load(f)
     print("Configuration loaded successfully.")
 ```
+
+## Visualization & Reporting
+
+This repository includes a utility to generate readable documentation from the TOML configuration.
+
+### Prerequisites
+
+*   Python 3.11+ (for `tomllib` support)
+
+### Generating Reports
+
+Run the `visualize.py` script to generate a markdown report and an HTML dashboard:
+
+```bash
+python3 visualize.py
+```
+
+### Outputs
+
+*   **`SSCP_VISUALIZATION.md`**: A summary report in Markdown format, ideal for including in documentation or wikis.
+*   **`SSCP_VISUALIZATION.html`**: A standalone HTML dashboard providing a visual overview of the security posture, including statistics on enabled controls and exceptions.
